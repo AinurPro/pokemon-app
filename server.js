@@ -12,6 +12,11 @@ const pokemon = require('./models/pokemon')
 
 const PORT = 3000;
 
+app.use((req, res, next)=> {
+    console.log(`Running middleware function!!!`);
+    next() // go to the next middleware or to the response
+    })
+
 app.set('view engine', 'ejs')
 app.set('views', './views')
 
@@ -28,6 +33,18 @@ app.get('/pokemon/:id', (req, res) => {
     res.render('show', {data:pokemon, pageTitle: "All the Pokemon", index: req.params.id})
 })
 
+app.get('/pokemon/new', (req, res)=> {
+    res.render('new-pokemon')
+})
+
+
+// Create a new Pokemon
+app.post("/pokemon", (req, res) => {
+    req.body.img = 'http://img.pokemondb.net/artwork/wartortle'`${req.body.name}`
+    pokemon.push(req.body)
+    console.log(req.body)
+    res.redirect('/pokemon')
+})
 app.listen(PORT, ()=>{
     console.log('server is running');
 })

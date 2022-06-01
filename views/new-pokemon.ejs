@@ -7,14 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Gotta Catch 'Em All</h1>
+    
+    <h1>Create a new Pokemon</h1>
 
-    <div>
-        <h2><%= data[index].name %></h2>
+    <form action="/pokemon" method="POST">
+        <input type="text" name="name">
+      
 
-        <img src = <%= ` ${data[index].img}.jpg` %> />
+<input type="submit" value="Create">
 
-        <a href="/pokemon">back</a>
-    </div>
+    </form>
+
+
 </body>
 </html>

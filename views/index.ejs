@@ -14,7 +14,8 @@
 
         <% data.map( (pokemon, index) => { %>
             <li>
-                <%= pokemon.name %>
+                <!-- <%= pokemon.name %> -->
+                <%= pokemon.name[0].toUpperCase() + pokemon.name.substring(1) %>
                 <img src = <%= `${pokemon.img}.jpg`%> width ="400" height="300">
 
           
